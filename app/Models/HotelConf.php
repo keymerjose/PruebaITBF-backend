@@ -15,7 +15,15 @@ class HotelConf extends Model
         'amount'
     ];
 
+    public function config(){
+        return $this->belongsTo(HotelConf::class, 'hotel_id');
+    }
+
     public function accommodation(){
-        return $this->belongsToMany(Accommodation::class, 'id');
+        return $this->belongsTo(Accommodation::class, 'accommodation_id');
+    }
+
+    public function types_room(){
+        return $this->belongsTo(RoomType::class, 'room_types_id');
     }
 }

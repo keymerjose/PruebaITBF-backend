@@ -16,6 +16,13 @@ class HotelController extends Controller
         ]);
     }
 
+    public function show(String $id){
+        return response()->json([
+            'error' => false,
+            'data' => Hotel::where('id', $id)->with('config')->get() ?? []
+        ]);
+    }
+
     public function delete( Request $request, Hotel $hotel ){
         $hotel->delete();
         return response()->json([
@@ -53,13 +60,6 @@ class HotelController extends Controller
             'error' => false,
             'data' => $hotel,
             'msg' => 'The hotel has been successfully created'
-        ]);
-    }
-
-    public function show(String $id){
-        return response()->json([
-            'error' => false,
-            'data' => Hotel::all()->find($id) ?? []
         ]);
     }
 }

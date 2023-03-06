@@ -21,6 +21,8 @@ class Hotel extends Model
         return $this->hasOne(City::class, 'id');
     }
 
+
+
     public function config(){
         return $this->hasMany(HotelConf::class, 'hotel_id');
     }
